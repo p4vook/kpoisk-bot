@@ -8,10 +8,5 @@ API_URL: str = environ.get(
 KINOPOISK_ROOT: str = environ.get(
     "KPOISK_KINOPOISK_ROOT", default="https://kinopoisk.ru"
 )
-DESCRIPTION_LENGTH: int = int(
-    environ.get("KPOISK_DESCRIPTION_LENGTH", default="500")
-)
-TOP_RESULTS_COUNT: int = int(
-    environ.get("KPOISK_TOP_RESULTS_COUNT", default="5")
-)
-BOT_USERNAME: str = environ.get("KPOISK_BOT_USERNAME", default="kpoisk_bot")
+DESCRIPTION_LENGTH: int = int(environ.get("KPOISK_DESCRIPTION_LENGTH", default="500"))
+TOP_RESULTS_COUNT: int = int(environ.get("KPOISK_TOP_RESULTS_COUNT", default="5"))

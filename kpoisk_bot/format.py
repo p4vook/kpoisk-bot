@@ -1,26 +1,15 @@
 import textwrap
 from typing import Tuple
 
-from aiogram.types import (
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    InlineQueryResult,
-    InlineQueryResultArticle,
-    InputTextMessageContent,
-    LinkPreviewOptions,
-)
-from aiogram.utils.formatting import (
-    Bold,
-    HashTag,
-    Italic,
-    Text,
-    TextLink,
-    as_line,
-    as_list,
-)
-from kinopoisk_unofficial_api_client.models import Film, FilmSearchResponseFilms
+from aiogram.types import (InlineKeyboardButton, InlineKeyboardMarkup,
+                           InlineQueryResult, InlineQueryResultArticle,
+                           InputTextMessageContent, LinkPreviewOptions)
+from aiogram.utils.formatting import (Bold, HashTag, Italic, Text, TextLink,
+                                      as_line, as_list)
+from kinopoisk_unofficial_api_client.models import (Film,
+                                                    FilmSearchResponseFilms)
 
-from .config import BOT_USERNAME, DESCRIPTION_LENGTH, KINOPOISK_ROOT
+from .config import DESCRIPTION_LENGTH, KINOPOISK_ROOT
 
 
 class FilmFormatter:
@@ -31,9 +20,7 @@ class FilmFormatter:
 
     def get_id(self) -> int:
         return (
-            self.film.kinopoisk_id
-            if isinstance(self.film, Film)
-            else self.film.film_id
+            self.film.kinopoisk_id if isinstance(self.film, Film) else self.film.film_id
         )
 
     def is_valid(self) -> bool:
@@ -50,11 +37,7 @@ class FilmFormatter:
         return self.film.poster_url if self.film.poster_url else None
 
     def get_poster_preview(self) -> str | None:
-        return (
-            self.film.poster_url_preview
-            if self.film.poster_url_preview
-            else None
-        )
+        return self.film.poster_url_preview if self.film.poster_url_preview else None
 
     def get_title(self) -> str:
         return self.film.name_ru or "Без названия"
@@ -89,8 +72,7 @@ class FilmFormatter:
                     str(self.film.rating_kinopoisk),
                     self.film.rating_kinopoisk_vote_count,
                 )
-                if self.film.rating_kinopoisk
-                and self.film.rating_kinopoisk_vote_count
+                if self.film.rating_kinopoisk and self.film.rating_kinopoisk_vote_count
                 else None
             )
         return (
@@ -102,9 +84,7 @@ class FilmFormatter:
         )
 
     def get_title_description(self) -> str:
-        return self.get_type() + (
-            (", " + self.get_year()) if self.get_year() else ""
-        )
+        return self.get_type() + ((", " + self.get_year()) if self.get_year() else "")
 
     def inline_title(self) -> str:
         return f"{self.get_title()} ({self.get_title_description()})"
@@ -119,9 +99,7 @@ class FilmFormatter:
         link_options = None
         content = Text(self.inline_title())
         if self.has_poster():
-            link_options = LinkPreviewOptions(
-                is_disabled=False, show_above_text=True
-            )
+            link_options = LinkPreviewOptions(is_disabled=False, show_above_text=True)
             content = TextLink(self.inline_title(), url=self.get_poster())
         return InputTextMessageContent(
             link_preview_options=link_options,
@@ -133,8 +111,8 @@ class FilmFormatter:
             inline_keyboard=[
                 [
                     InlineKeyboardButton(
-                        text="See this movie in bot",
-                        url=f"tg://{BOT_USERNAME}?start={self.get_id()}",
+                        text="Посмотреть на КиноПоиске",
+                        url=self.get_url(),
                     )
                 ]
             ]
