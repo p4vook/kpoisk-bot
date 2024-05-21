@@ -1,5 +1,10 @@
 # Telegram bot to search for movies in Kinopoisk
 
+[![Python CI](https://github.com/p4vook/kpoisk-bot/actions/workflows/tests.yml/badge.svg?branch=dev)](https://github.com/p4vook/kpoisk-bot/actions/workflows/tests.yml)
+[![Tests](https://p4vook.github.io/kpoisk-bot/badges/tests.svg)](https://p4vook.github.io/kpoisk-bot/reports/junit/)
+[![Coverage](https://p4vook.github.io/kpoisk-bot/badges/coverage.svg)](https://p4vook.github.io/kpoisk-bot/reports/coverage/)
+[![Flake8](https://p4vook.github.io/kpoisk-bot/badges/flake8.svg)](https://p4vook.github.io/kpoisk-bot/reports/flake8/)
+
 (Heavily inspired by @imdbot)
 
 Functionality: 
