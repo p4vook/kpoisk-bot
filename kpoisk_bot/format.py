@@ -27,13 +27,9 @@ class FilmFormatter:
         return bool(self.get_id())
 
     def has_poster(self) -> bool:
-        if isinstance(self.film, Film):
-            return self.film.cover_url is not None
         return bool(self.film.poster_url) and bool(self.film.poster_url_preview)
 
     def get_poster(self) -> str | None:
-        if isinstance(self.film, Film):
-            return self.film.cover_url
         return self.film.poster_url if self.film.poster_url else None
 
     def get_poster_preview(self) -> str | None:
