@@ -12,22 +12,18 @@ Functionality:
   When you see the one you looked for, click on it, and the bot will 
   format the movie information as a Telegram message.
 
-- User settings:
+- User mode:
 
-  User can directly message the bot in Telegram and issue a /settings
-  command. In response bot sends a message with all the settings that 
-  can be changed formatted as buttons.
+  User can directly message the bot in Telegram. The bot will search films
+  by that message text and send them one-by-one.
 
 How it is implemented:
 
-* It uses API from https://kinopoiskapiunofficial.tech/
-* It uses a Postgres database to store user settings and cache API results
-* It uses telethon to communicate with Telegram
-* Everything is orchestrated using Docker-Compose
+* It uses API from https://kinopoiskapiunofficial.tech/, with an auto-generated client
+* It uses `aiogram` to communicate with Telegram
 
 Libraries:
 
 * `aiogram` (communicating with Telegram)
 * `httpx` (communicating with API)
-* `beanie` (ORM)
 * `pydantic` (model validation)
