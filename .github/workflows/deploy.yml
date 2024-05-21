@@ -1,0 +1,21 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  docker:
+    name: docker
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build docker image
+      run: |
+        docker build -t ghcr.io/p4vook/kpoisk-bot:latest .
+    - name: Upload docker image
+      run: |
+        echo ${{ secrets.PKG_REGISTRY_TOKEN }} | docker login ghcr.io --username p4vook --password-stdin 
+        docker push ghcr.io/p4vook/kpoisk-bot:latest
