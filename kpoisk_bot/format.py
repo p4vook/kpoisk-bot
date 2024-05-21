@@ -18,11 +18,7 @@ from aiogram.utils.formatting import (
     as_line,
     as_list,
 )
-from kinopoisk_unofficial_api_client.models import (
-    Film,
-    FilmSearchResponseFilms,
-    FilmType,
-)
+from kinopoisk_unofficial_api_client.models import Film, FilmSearchResponseFilms
 
 from .config import BOT_USERNAME, DESCRIPTION_LENGTH, KINOPOISK_ROOT
 
@@ -41,12 +37,12 @@ class FilmFormatter:
         )
 
     def is_valid(self) -> bool:
-        return self.get_id()
+        return bool(self.get_id())
 
     def has_poster(self) -> bool:
         if isinstance(self.film, Film):
             return self.film.cover_url is not None
-        return self.film.poster_url and self.film.poster_url_preview
+        return bool(self.film.poster_url) and bool(self.film.poster_url_preview)
 
     def get_poster(self) -> str | None:
         if isinstance(self.film, Film):
@@ -65,13 +61,13 @@ class FilmFormatter:
 
     def get_type(self) -> str:
         DESCRIPTION = {
-            FilmType.FILM: "фильм",
-            FilmType.MINI_SERIES: "мини-сериал",
-            FilmType.TV_SERIES: "сериал",
-            FilmType.TV_SHOW: "ТВ-шоу",
-            FilmType.VIDEO: "видео",
+            "FILM": "фильм",
+            "MINI_SERIES": "мини-сериал",
+            "TV_SERIES": "сериал",
+            "TV_SHOW": "ТВ-шоу",
+            "VIDEO": "видео",
         }
-        return DESCRIPTION[self.film.type]
+        return DESCRIPTION[str(self.film.type)]
 
     def get_description(self) -> str:
         return self.film.description or "Без описания"
@@ -83,7 +79,7 @@ class FilmFormatter:
         return (
             str(self.film.year)
             if self.film.year and isinstance(self.film, Film)
-            else self.film.year
+            else (self.film.year if self.film.year else None)
         )
 
     def get_rating(self) -> Tuple[str, int] | None:
@@ -94,17 +90,20 @@ class FilmFormatter:
                     self.film.rating_kinopoisk_vote_count,
                 )
                 if self.film.rating_kinopoisk
+                and self.film.rating_kinopoisk_vote_count
                 else None
             )
         return (
-            self.film.rating
-            if self.film.rating and self.film.rating != "null"
+            (self.film.rating, self.film.rating_vote_count)
+            if self.film.rating
+            and self.film.rating != "null"
+            and self.film.rating_vote_count
             else None
         )
 
     def get_title_description(self) -> str:
         return self.get_type() + (
-            ", " + self.get_year() if self.get_year() else ""
+            (", " + self.get_year()) if self.get_year() else ""
         )
 
     def inline_title(self) -> str:
@@ -234,7 +233,7 @@ class FilmFormatter:
                 [
                     InlineKeyboardButton(
                         text="Посмотреть на КиноПоиске",
-                        url=self.film.web_url or self.get_url(),
+                        url=self.get_url(),
                     )
                 ]
             ]

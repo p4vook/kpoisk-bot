@@ -4,10 +4,10 @@ import sys
 from typing import Any
 
 from aiogram import Bot, Dispatcher, Router, html
-from aiogram.methods import EditMessageText, EditMessageReplyMarkup
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
+from aiogram.methods import EditMessageReplyMarkup, EditMessageText
 from aiogram.types import (
     ChosenInlineResult,
     InlineQuery,
@@ -39,6 +39,8 @@ async def command_start_handler(message: Message) -> None:
 
 @router.message()
 async def search_handler(message: Message, api_client: Client) -> Any:
+    if message.text is None:
+        return
     try:
         results = await get_api_v2_1_films_search_by_keyword.asyncio(
             client=api_client, keyword=message.text, page=1
@@ -55,10 +57,9 @@ async def search_handler(message: Message, api_client: Client) -> Any:
                 results.films[:TOP_RESULTS_COUNT],
             )
         )
-    except (HTTPError, TypeError) as e:
+    except HTTPError as e:
         # But not all the types is supported to be copied so need to handle it
         logging.error(e)
-        return await message.reply(e)
 
 
 @router.inline_query()
@@ -108,7 +109,7 @@ async def chosen_inline_handler(
         return
 
     film = await get_api_v2_2_films_id.asyncio(
-        id=result.result_id, client=api_client
+        id=int(result.result_id), client=api_client
     )
     formatter = FilmFormatter(film)
     as_message = formatter.as_text_message()
