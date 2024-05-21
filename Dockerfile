@@ -1,7 +1,7 @@
 FROM python:3.11-slim
 WORKDIR /app
 
-COPY kpoisk_bot .
+COPY kpoisk_bot kpoisk_bot
 COPY requirements.txt .
 
 RUN apt update && apt install -y git
