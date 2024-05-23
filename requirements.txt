@@ -1,0 +1,7 @@
+aiogram==3.6
+aiogram_tests @ git+https://github.com/p4vook/aiogram_tests@master
+pytest_httpx
+kinopoisk-unofficial-api-client @ git+https://github.com/p4vook/kinopoisk-unofficial-api-client@master
+pydantic==2.7
+pytest
+pytest-asyncio
