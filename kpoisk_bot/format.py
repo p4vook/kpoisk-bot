@@ -1,13 +1,24 @@
 import textwrap
 from typing import Tuple
 
-from aiogram.types import (InlineKeyboardButton, InlineKeyboardMarkup,
-                           InlineQueryResult, InlineQueryResultArticle,
-                           InputTextMessageContent, LinkPreviewOptions)
-from aiogram.utils.formatting import (Bold, HashTag, Italic, Text, TextLink,
-                                      as_line, as_list)
-from kinopoisk_unofficial_api_client.models import (Film,
-                                                    FilmSearchResponseFilms)
+from aiogram.types import (
+    InlineKeyboardButton,
+    InlineKeyboardMarkup,
+    InlineQueryResult,
+    InlineQueryResultArticle,
+    InputTextMessageContent,
+    LinkPreviewOptions,
+)
+from aiogram.utils.formatting import (
+    Bold,
+    HashTag,
+    Italic,
+    Text,
+    TextLink,
+    as_line,
+    as_list,
+)
+from kinopoisk_unofficial_api_client.models import Film, FilmSearchResponseFilms
 
 from .config import DESCRIPTION_LENGTH, KINOPOISK_ROOT
 
@@ -95,7 +106,9 @@ class FilmFormatter:
         link_options = None
         content = Text(self.inline_title())
         if self.has_poster():
-            link_options = LinkPreviewOptions(is_disabled=False, show_above_text=True)
+            link_options = LinkPreviewOptions(
+                is_disabled=False, show_above_text=True, force_large_media=True
+            )
             content = TextLink(self.inline_title(), url=self.get_poster())
         return InputTextMessageContent(
             link_preview_options=link_options,

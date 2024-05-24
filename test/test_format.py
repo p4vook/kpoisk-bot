@@ -75,7 +75,7 @@ def test_inline_content(search_formatter):
     print(search_formatter.as_inline_content())
     assert search_formatter.as_inline_content() == InputTextMessageContent(
         link_preview_options=LinkPreviewOptions(
-            is_disabled=False, show_above_text=True
+            is_disabled=False, show_above_text=True, force_large_media=True
         ),
         message_text="ru (фильм, 2007)",
         parse_mode=None,
