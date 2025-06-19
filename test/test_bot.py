@@ -67,5 +67,5 @@ async def test_search_handler(httpx_mock):
         answer_message = calls.send_message.fetchone()
         assert (
             answer_message.text
-            == "Название: ru (фильм, 2007)\nЖанры: #комедия, #хоррор\nДлина: 1\n\nОписание: desc\n"
+            == "Название: ru (фильм, 2007)\nЖанры: #комедия, #хоррор\nПродолжительность: 1m\n\nОписание: desc\n"
         )

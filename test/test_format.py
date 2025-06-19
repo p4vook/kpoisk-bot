@@ -113,7 +113,7 @@ def test_as_text_message(search_formatter):
         message_text="""Название: ru (фильм, 2007)
 Жанры: #комедия, #хоррор
 Рейтинг: 5.7 (57 оценок)
-Длина: 1
+Продолжительность: 1m
 
 Описание: desc
 """,
@@ -131,8 +131,8 @@ def test_as_text_message(search_formatter):
             MessageEntity(type="hashtag", offset=44, length=7),
             MessageEntity(type="bold", offset=52, length=8),
             MessageEntity(type="italic", offset=65, length=11),
-            MessageEntity(type="bold", offset=77, length=6),
-            MessageEntity(type="bold", offset=87, length=9),
+            MessageEntity(type="bold", offset=77, length=18),
+            MessageEntity(type="bold", offset=100, length=9),
         ],
         link_preview_options=LinkPreviewOptions(
             is_disabled=False, url="https://POST", show_above_text=True
