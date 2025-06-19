@@ -172,7 +172,7 @@ class FilmFormatter:
 
     def length_component(self) -> Text | None:
         if self.film.film_length:
-            return as_line(Bold("Длина:"), Text(self.film.film_length), sep=" ")
+            return as_line(Bold("Продолжительность:"), Text(self.film.film_length + "m"), sep=" ")
         return None
 
     def description_component(self) -> Text:
