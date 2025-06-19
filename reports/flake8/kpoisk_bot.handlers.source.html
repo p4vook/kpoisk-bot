@@ -17,22 +17,22 @@
 
          <div id="doc">
             <div id="l1"
-               class="code sev- "><tt><i>1</i> <span class="kn">import</span> <span class="nn">logging</span></tt>
+               class="code sev- "><tt><i>1</i> <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span></tt>
             </div>
             <div id="l2"
-               class="code sev- "><tt><i>2</i> <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span></tt>
+               class="code sev- "><tt><i>2</i> <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span></tt>
             </div>
             <div id="l3"
                class="code sev- "><tt><i>3</i> &nbsp;</tt>
             </div>
             <div id="l4"
-               class="code sev- "><tt><i>4</i> <span class="kn">from</span> <span class="nn">aiogram</span> <span class="kn">import</span> <span class="n">Router</span><span class="p">,</span> <span class="n">html</span></tt>
+               class="code sev- "><tt><i>4</i> <span class="kn">from</span><span class="w"> </span><span class="nn">aiogram</span><span class="w"> </span><span class="kn">import</span> <span class="n">Router</span><span class="p">,</span> <span class="n">html</span></tt>
             </div>
             <div id="l5"
-               class="code sev- "><tt><i>5</i> <span class="kn">from</span> <span class="nn">aiogram.filters</span> <span class="kn">import</span> <span class="n">CommandStart</span></tt>
+               class="code sev- "><tt><i>5</i> <span class="kn">from</span><span class="w"> </span><span class="nn">aiogram.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">CommandStart</span></tt>
             </div>
             <div id="l6"
-               class="code sev- "><tt><i>6</i> <span class="kn">from</span> <span class="nn">aiogram.types</span> <span class="kn">import</span> <span class="p">(</span></tt>
+               class="code sev- "><tt><i>6</i> <span class="kn">from</span><span class="w"> </span><span class="nn">aiogram.types</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span></tt>
             </div>
             <div id="l7"
                class="code sev- "><tt><i>7</i>     <span class="n">ChosenInlineResult</span><span class="p">,</span></tt>
@@ -53,13 +53,13 @@
                class="code sev- "><tt><i>12</i> <span class="p">)</span></tt>
             </div>
             <div id="l13"
-               class="code sev- "><tt><i>13</i> <span class="kn">from</span> <span class="nn">httpx</span> <span class="kn">import</span> <span class="n">HTTPError</span></tt>
+               class="code sev- "><tt><i>13</i> <span class="kn">from</span><span class="w"> </span><span class="nn">httpx</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTTPError</span></tt>
             </div>
             <div id="l14"
-               class="code sev- "><tt><i>14</i> <span class="kn">from</span> <span class="nn">kinopoisk_unofficial_api_client</span> <span class="kn">import</span> <span class="n">Client</span></tt>
+               class="code sev- "><tt><i>14</i> <span class="kn">from</span><span class="w"> </span><span class="nn">kinopoisk_unofficial_api_client</span><span class="w"> </span><span class="kn">import</span> <span class="n">Client</span></tt>
             </div>
             <div id="l15"
-               class="code sev- "><tt><i>15</i> <span class="kn">from</span> <span class="nn">kinopoisk_unofficial_api_client.api.films</span> <span class="kn">import</span> <span class="p">(</span></tt>
+               class="code sev- "><tt><i>15</i> <span class="kn">from</span><span class="w"> </span><span class="nn">kinopoisk_unofficial_api_client.api.films</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span></tt>
             </div>
             <div id="l16"
                class="code sev- "><tt><i>16</i>     <span class="n">get_api_v2_1_films_search_by_keyword</span><span class="p">,</span></tt>
@@ -74,10 +74,10 @@
                class="code sev- "><tt><i>19</i> &nbsp;</tt>
             </div>
             <div id="l20"
-               class="code sev- "><tt><i>20</i> <span class="kn">from</span> <span class="nn">.config</span> <span class="kn">import</span> <span class="n">TOP_RESULTS_COUNT</span></tt>
+               class="code sev- "><tt><i>20</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">TOP_RESULTS_COUNT</span></tt>
             </div>
             <div id="l21"
-               class="code sev- "><tt><i>21</i> <span class="kn">from</span> <span class="nn">.format</span> <span class="kn">import</span> <span class="n">FilmFormatter</span></tt>
+               class="code sev- "><tt><i>21</i> <span class="kn">from</span><span class="w"> </span><span class="nn">.format</span><span class="w"> </span><span class="kn">import</span> <span class="n">FilmFormatter</span></tt>
             </div>
             <div id="l22"
                class="code sev- "><tt><i>22</i> &nbsp;</tt>
@@ -98,7 +98,7 @@
                class="code sev- "><tt><i>27</i> <span class="nd">@router</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="n">CommandStart</span><span class="p">())</span></tt>
             </div>
             <div id="l28"
-               class="code sev- "><tt><i>28</i> <span class="k">async</span> <span class="k">def</span> <span class="nf">command_start_handler</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">Message</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span></tt>
+               class="code sev- "><tt><i>28</i> <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">command_start_handler</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">Message</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span></tt>
             </div>
             <div id="l29"
                class="code sev- "><tt><i>29</i> <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span></tt>
@@ -122,7 +122,7 @@
                class="code sev- "><tt><i>35</i> <span class="nd">@router</span><span class="o">.</span><span class="n">message</span><span class="p">()</span></tt>
             </div>
             <div id="l36"
-               class="code sev- "><tt><i>36</i> <span class="k">async</span> <span class="k">def</span> <span class="nf">search_handler</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">Message</span><span class="p">,</span> <span class="n">api_client</span><span class="p">:</span> <span class="n">Client</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span></tt>
+               class="code sev- "><tt><i>36</i> <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">search_handler</span><span class="p">(</span><span class="n">message</span><span class="p">:</span> <span class="n">Message</span><span class="p">,</span> <span class="n">api_client</span><span class="p">:</span> <span class="n">Client</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span></tt>
             </div>
             <div id="l37"
                class="code sev- "><tt><i>37</i>     <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">text</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span></tt>
@@ -191,7 +191,7 @@
                class="code sev- "><tt><i>58</i> <span class="nd">@router</span><span class="o">.</span><span class="n">inline_query</span><span class="p">()</span></tt>
             </div>
             <div id="l59"
-               class="code sev- "><tt><i>59</i> <span class="k">async</span> <span class="k">def</span> <span class="nf">inline_handler</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="n">InlineQuery</span><span class="p">,</span> <span class="n">api_client</span><span class="p">:</span> <span class="n">Client</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span></tt>
+               class="code sev- "><tt><i>59</i> <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">inline_handler</span><span class="p">(</span><span class="n">query</span><span class="p">:</span> <span class="n">InlineQuery</span><span class="p">,</span> <span class="n">api_client</span><span class="p">:</span> <span class="n">Client</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span></tt>
             </div>
             <div id="l60"
                class="code sev- "><tt><i>60</i>     <span class="k">if</span> <span class="ow">not</span> <span class="n">query</span><span class="o">.</span><span class="n">query</span><span class="p">:</span></tt>
@@ -335,7 +335,7 @@
                      </span>
                      Line too long (87 > 80 characters)</li>
                
-               </ul><tt><i>98</i> <span class="k">async</span> <span class="k">def</span> <span class="nf">chosen_inline_handler</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="n">ChosenInlineResult</span><span class="p">,</span> <span class="n">api_client</span><span class="p">:</span> <span class="n">Client</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span></tt>
+               </ul><tt><i>98</i> <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">chosen_inline_handler</span><span class="p">(</span><span class="n">result</span><span class="p">:</span> <span class="n">ChosenInlineResult</span><span class="p">,</span> <span class="n">api_client</span><span class="p">:</span> <span class="n">Client</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span></tt>
             </div>
             <div id="l99"
                class="code sev- "><tt><i>99</i>     <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">result_id</span> <span class="o">==</span> <span class="s2">&quot;ERROR&quot;</span> <span class="ow">or</span> <span class="n">result</span><span class="o">.</span><span class="n">result_id</span> <span class="o">==</span> <span class="s2">&quot;EMPTY&quot;</span><span class="p">:</span></tt>
