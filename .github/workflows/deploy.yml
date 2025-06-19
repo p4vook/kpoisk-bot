@@ -17,5 +17,5 @@ jobs:
         docker build -t ghcr.io/p4vook/kpoisk-bot:latest .
     - name: Upload docker image
       run: |
-        echo ${{ secrets.PKG_REGISTRY_TOKEN }} | docker login ghcr.io --username p4vook --password-stdin 
+        echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io --username p4vook --password-stdin 
         docker push ghcr.io/p4vook/kpoisk-bot:latest
